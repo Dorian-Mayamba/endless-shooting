@@ -13,17 +13,24 @@ public class EnemySpawner : MonoBehaviour {
 
     void Update() {
         if (Time.time > SpawnTime) {
-            Spawn();
+            SpawnGoose();
             SpawnTime = Time.time + TimeBetweenSpawn;
         }
     }
 
-    void Spawn() {
+    void SpawnGoose() {
         float RandomX = Random.Range(MinX, MaxX);
         float RandomY = Random.Range(MinY, MaxX);
 
-        Instantiate(Enemy, transform.position + new Vector3(RandomX, RandomY, 0), transform.rotation);
+        GameObject gooseEnemy = Instantiate(Enemy, transform.position + new Vector3(RandomX, RandomY, 0), transform.rotation);
+
+        StartCoroutine(DestroyGooseLater(gooseEnemy));
     }
 
-    // add ienumerator method to destroy instances
+    IEnumerator DestroyGooseLater(GameObject goose) {
+        yield return new WaitForSeconds(3);
+        Debug.Log("Destroying goose " + goose.GetInstanceID() + "...");
+        DestroyImmediate(goose, true);
+    }
+
 }
