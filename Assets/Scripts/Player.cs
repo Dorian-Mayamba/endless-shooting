@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
     public float PlayerSpeed;
     private Rigidbody2D _rigidBody;
     private Vector2 _playerDirection;
+
+    [SerializeField]private PlayerScore playerScore;
 
     void Start() {
         _rigidBody = GetComponent<Rigidbody2D>();
