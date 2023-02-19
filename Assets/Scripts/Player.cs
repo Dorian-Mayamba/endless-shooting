@@ -17,6 +17,8 @@ public class Player : MonoBehaviour {
     void Update() {
         float directionY = Input.GetAxis("Vertical");
         _playerDirection = new Vector2(0, directionY).normalized;
+        // NEVER DO "SoundManager.instance.Play(SoundManager.instance.geeseHonk1);" OVER HERE!!!!
+        // WORST MISTAKE OF MY LIFE! 💀
     }
 
     void FixedUpdate() {

@@ -760,6 +760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerSpeed: 10
   playerScore: {fileID: 1976017986}
+  soundManager: {fileID: 0}
 --- !u!1 &1898329053
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,3 +906,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1db59ffd30581944b031aefe20de62b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
