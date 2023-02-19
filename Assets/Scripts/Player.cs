@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
     public float PlayerSpeed;
+
+    private string target = "Enemy(Clone)";
     public int BulletSpeed;
     private Rigidbody2D _rigidBody;
     private Rigidbody2D _bulletRigidBody;
@@ -14,8 +17,14 @@ public class Player : MonoBehaviour {
     [SerializeField]private PlayerScore playerScore;
     [SerializeField]private GameObject bullet;
 
+    private float playerHealth;
+
+    [SerializeField] HealthBar playerBar;
+
     void Start() {
         _rigidBody = GetComponent<Rigidbody2D>();
+        playerBar.Init();
+        SetPlayerHealth(playerBar.GetSlider().maxValue);
     }
 
     void Update() {
@@ -25,6 +34,11 @@ public class Player : MonoBehaviour {
             GameObject bulletObject = Instantiate(bullet, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation);
             _bulletRigidBody = bulletObject.GetComponent<Rigidbody2D>();
         }
+        if(this.playerHealth <= 0)
+        {
+            Destroy(this.gameObject);
+            SceneManager.LoadScene("Gameover Scene");
+        }
     }
 
     void FixedUpdate() {
@@ -32,5 +46,28 @@ public class Player : MonoBehaviour {
         if(_bulletRigidBody){
             _bulletRigidBody.velocity = new Vector2(BulletSpeed, 0);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log(target .Equals(other.name));
+        if(target.Equals(other.name)){
+            this.playerHealth-=5;
+            this.playerBar.Sethealth(this.playerHealth);
+        }
+    }
+
+    public void SetPlayerHealth(float health)
+    {
+        this.playerHealth = health;
+    }
+
+    public void Death()
+    {
+        Destroy(transform.gameObject);
+    }
+
+    public float getPlayerHealth()
+    {
+        return this.playerHealth;
     }
 }
