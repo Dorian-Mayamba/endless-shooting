@@ -31,7 +31,8 @@ public class Player : MonoBehaviour {
         float directionY = Input.GetAxis("Vertical");
         _playerDirection = new Vector2(0, directionY).normalized;
         if(Input.GetKeyDown(KeyCode.Space)){
-            GameObject bulletObject = Instantiate(bullet, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation);
+            GameObject bulletObject = Instantiate(bullet, bullet.transform.position, bullet.transform.rotation);
+            bulletObject.transform.SetParent(this.gameObject.transform,false);
             _bulletRigidBody = bulletObject.GetComponent<Rigidbody2D>();
         }
         if(this.playerHealth <= 0)
@@ -69,5 +70,10 @@ public class Player : MonoBehaviour {
     public float getPlayerHealth()
     {
         return this.playerHealth;
+    }
+
+    public void UpdateScore(int score)
+    {
+        playerScore.updateScore(score);
     }
 }
