@@ -35,6 +35,8 @@ public class Bullet : MonoBehaviour
             case 30:
                 player.IncreaseLevel();
                 GameManager.instance.updateTextLevel(player.GetLevel());
+                GameManager.instance.IncreaseEnemySpeed();
+                GameManager.instance.decreaseSpawnRate();
                 break;
             case 40:
                 player.IncreaseLevel();
@@ -43,6 +45,8 @@ public class Bullet : MonoBehaviour
             case 50:
                 player.IncreaseLevel();
                 GameManager.instance.updateTextLevel(player.GetLevel());
+                GameManager.instance.IncreaseEnemySpeed();
+                GameManager.instance.decreaseSpawnRate();
                 break;
         }
             Instantiate(explosion, transform.position, transform.rotation);

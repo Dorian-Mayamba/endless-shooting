@@ -29,5 +29,20 @@ public class GameManager : MonoBehaviour
         text.text = string.Format("level {0}", level);
     }
 
+    public void decreaseSpawnRate()
+    {
+        GetComponentInChildren<EnemySpawner>().TimeBetweenSpawn-=2;
+    }
+
+    public void DecreaseSpawnRate(float amount)
+    {
+        GetComponentInChildren<EnemySpawner>().TimeBetweenSpawn-=amount;
+    }
+
+    public void IncreaseEnemySpeed()
+    {
+        
+    }
+
     
 }
