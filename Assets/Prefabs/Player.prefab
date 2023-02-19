@@ -188,7 +188,7 @@ MonoBehaviour:
   BulletSpeed: 5
   bulletSpawnPoint: {fileID: 8037981209041089687}
   playerScore: {fileID: 0}
-  bullet: {fileID: 1677976816822067266, guid: 2c72a6286932deb41a5e2343f9c695d5, type: 3}
+  bullet: {fileID: 6737002781908268412, guid: 6808d0713996bde40be0d0a1d69fc9eb, type: 3}
   playerBar: {fileID: 0}
 --- !u!61 &8037981210174999874
 BoxCollider2D:
