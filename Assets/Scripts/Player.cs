@@ -12,11 +12,16 @@ public class Player : MonoBehaviour {
     private Rigidbody2D _rigidBody;
     private Rigidbody2D _bulletRigidBody;
     private Vector2 _playerDirection;
+
+    private Vector3 _playerPostion;
     [SerializeField]private GameObject bulletSpawnPoint;
 
     [SerializeField]private PlayerScore playerScore;
     [SerializeField]private GameObject bullet;
 
+    public int level;
+
+    [SerializeField] private float maxY, minY;
     private float playerHealth;
 
     [SerializeField] HealthBar playerBar;
@@ -25,6 +30,8 @@ public class Player : MonoBehaviour {
         _rigidBody = GetComponent<Rigidbody2D>();
         playerBar.Init();
         SetPlayerHealth(playerBar.GetSlider().maxValue);
+        level = 0;
+        
     }
 
     void Update() {
@@ -75,5 +82,20 @@ public class Player : MonoBehaviour {
     public void UpdateScore(int score)
     {
         playerScore.updateScore(score);
+    }
+
+    public int GetScore()
+    {
+        return this.playerScore.GetScore();
+    }
+
+    public void IncreaseLevel()
+    {
+        this.level++;
+    }
+
+    public int GetLevel()
+    {
+        return this.level;
     }
 }

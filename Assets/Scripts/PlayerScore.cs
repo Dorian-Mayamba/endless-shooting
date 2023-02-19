@@ -14,4 +14,9 @@ public class PlayerScore : MonoBehaviour
         scoreText.text = "Score: " + this.score.ToString();
         Debug.Log(string.Format("Score updated to %d", this.score));
     }
+
+    public int GetScore()
+    {
+        return this.score;
+    }
 }
