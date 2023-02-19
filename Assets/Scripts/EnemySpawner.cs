@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     IEnumerator DestroyGooseLater(GameObject goose) {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(10);
         Debug.Log("Destroying goose " + goose.GetInstanceID() + "...");
         DestroyImmediate(goose, true);
     }

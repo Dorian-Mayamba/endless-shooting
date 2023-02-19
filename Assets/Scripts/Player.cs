@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
     public float PlayerSpeed;
     public int BulletSpeed;
     private Rigidbody2D _rigidBody;
+    private Rigidbody2D _bulletRigidBody;
     private Vector2 _playerDirection;
     [SerializeField]private GameObject bulletSpawnPoint;
 
@@ -20,14 +21,16 @@ public class Player : MonoBehaviour {
     void Update() {
         float directionY = Input.GetAxis("Vertical");
         _playerDirection = new Vector2(0, directionY).normalized;
-        if(Input.GetKey(KeyCode.Space)){
-            Debug.Log("Space button pressed");
+        if(Input.GetKeyDown(KeyCode.Space)){
             GameObject bulletObject = Instantiate(bullet, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation);
-            
+            _bulletRigidBody = bulletObject.GetComponent<Rigidbody2D>();
         }
     }
 
     void FixedUpdate() {
         _rigidBody.velocity = new Vector2(0, _playerDirection.y * PlayerSpeed);
+        if(_bulletRigidBody){
+            _bulletRigidBody.velocity = new Vector2(BulletSpeed, 0);
+        }
     }
 }

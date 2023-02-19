@@ -7,6 +7,6 @@ public class CameraMovement : MonoBehaviour {
     public float CameraSpeed;
 
     void Update() {
-        transform.position += new Vector3(CameraSpeed * Time.deltaTime, 0, 0);
+        //transform.position += new Vector3(CameraSpeed * Time.deltaTime, 0, 0);
     }
 }
